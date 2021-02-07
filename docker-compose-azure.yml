@@ -1,0 +1,17 @@
+version: '3.4'
+
+services:
+  dockerpostgres:
+    image: dockerpostgres
+    build:
+      context: .
+      dockerfile: ./Dockerfile
+    ports:
+      - 8080:8080
+    environment:
+      - POSTGRES_CONN_URL=r2dbc:pool:postgres://rgb-postgres.postgres.database.azure.com:5432/postgres?ssl=true&sslmode=require
+      - POSTGRES_DB=postgres
+      - POSTGRES_USERNAME=pitifulOrange5@rgb-postgres
+      - POSTGRES_PASSWORD=uALjFk4K8B4psYKKDg749w
+      - POSTGRES_HOST=rgb-postgres.postgres.database.azure.com
+      - POSTGRES_PORT=5432
