@@ -1,0 +1,24 @@
+version: '3.4'
+
+services:
+  dockerpostgres:
+    image: dockerpostgres
+    build:
+      context: .
+      dockerfile: ./Dockerfile
+    ports:
+      - 8080:8080
+    depends_on:
+      - db
+    environment: 
+      - POSTGRES_USERNAME=postgres
+      - POSTGRES_PASSWORD=postgres
+      - POSTGRES_HOST=127.0.0.1
+      - POSTGRES_PORT=5432
+
+  db:
+    image: 'postgres:13.1-alpine'
+    container_name: db
+    environment:
+      - POSTGRES_USER=postgres
+      - POSTGRES_PASSWORD=postgres
